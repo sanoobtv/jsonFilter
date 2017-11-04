@@ -50,5 +50,13 @@ module.exports = function(app) {
     }
   });
 
+  app.post('/validate2Json', (req, res) => {
+    console.log(req.body);
+    var drm=req.body.drm;
+    var episodeCount=req.body.episodeCount;
+    console.log("got get");
+    console.log(drm+episodeCount);
+  });
+
 
 }
