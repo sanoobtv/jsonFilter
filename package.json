@@ -4,8 +4,27 @@
   "description": "Json App, to filter key values",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
   "author": "Sanoob",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "ejs": "^2.5.7",
+    "express": "^4.16.2",
+    "is-json": "^2.0.1",
+    "json-query": "^2.2.2",
+    "nodemon": "^1.12.1",
+    "save": "^2.3.1"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sanoobtv/jsonFilter.git"
+  },
+  "bugs": {
+    "url": "https://github.com/sanoobtv/jsonFilter/issues"
+  },
+  "homepage": "https://github.com/sanoobtv/jsonFilter#readme"
 }
