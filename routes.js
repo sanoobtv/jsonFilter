@@ -4,8 +4,7 @@ module.exports = function(app) {
   //var isJSON = require('is-json');
   var isJSON = require('is-valid-json');
   var jsonQuery = require('json-query');
-
-var oresultSet=require('./Model/resultSet.js');
+  var oresultSet=require('./Model/resultSet.js');
 
   app.use(bodyParser.urlencoded({
     extended: true
