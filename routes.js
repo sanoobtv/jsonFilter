@@ -10,10 +10,10 @@ module.exports = function(app) {
 }));
 app.use(bodyParser.json());
 //HomePage Rendering, a simple Form
-app.get('/', function(req, res) {
+/*app.get('/', function(req, res) {
   res.render('Index.ejs');
 });
-
+*/
   //Form action from index.js.
   app.post('/validateJson', function(req, res) {
     //obtain form data - which is JSON inside the text field.
