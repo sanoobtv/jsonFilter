@@ -10,7 +10,7 @@ var http = require('http');
 
 var server = http.createServer(function(req,res){
 console.log("request - > "+ req.body);
-if(req.url === '/')
+/*if(req.url === '/')
 {
 
 var payload = req.body.payload;
@@ -40,12 +40,13 @@ function getDataByEp(jrespon) {
 for (var i = 0; i < episodefilter.length; i++) {
 var iresultSet = new oresultSet(episodefilter[i].image.showImage, episodefilter[i].slug, episodefilter[i].title)
 result[i] = iresultSet;
-}
+}*/
 res.writeHead(200, {'Content-Type':'application/json'});
 res.end(JSON.stringify(result));
-}
+//}
 
-}});
+//}
+});
 server.listen(port, function () {
   console.log('Example app listening on port 3000!');
 });
