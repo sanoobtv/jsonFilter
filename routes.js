@@ -69,6 +69,10 @@ module.exports = function(app) {
 
     function getDataByDrm(data) {
       console.log("1function");
+      console.log("!!!!!!!!!!!!!!!!!!!!");
+      console.log(JSON.parse(data));
+      console.log("!!!!!!!!!!!!!!!!!!!!");
+
       var jdata = JSON.parse(data);
       var drm = true;
       return jdata.filter(
