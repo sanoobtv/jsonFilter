@@ -23,15 +23,11 @@ module.exports = function(app) {
     return parsed // Could be undefined!
   }
 
-
   app.use(bodyParser.json());
 
   //Express Error handling.
   app.use(errorHandler);
-  //app.use(logErrors)
-  //app.use(clientErrorHandler)
 
-  //Invalid Json request Error Handling
   function errorHandler (err, req, res, next) {
     res.status(400).send({ error: 'Could not decode request' })
   }
@@ -69,8 +65,8 @@ app.post('/', (req, res ,err) => {
       var iresultSet = new oresultSet(episodefilter[i].image.showImage, episodefilter[i].slug, episodefilter[i].title)
       result[i] = iresultSet;
     }
-res.status(200).send({ response: result });
-  
+  res.status(200).send({ response: result });
+
 }
   });
 
