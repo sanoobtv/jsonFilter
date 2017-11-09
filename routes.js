@@ -70,9 +70,31 @@ module.exports = function(app) {
     function getDataByDrm(data) {
       console.log("1function");
       console.log("!!!!!!!!!!!!!!!!!!!!");
+      var badJSON = data;
 
-      JSONArray jsonArr = new JSONArray(data);
-      console.log(jsonArr);
+      var fixedJSON = badJSON
+
+      	// Replace ":" with "@colon@" if it's between double-quotes
+      	.replace(/:\s*"([^"]*)"/g, function(match, p1) {
+      		return ': "' + p1.replace(/:/g, '@colon@') + '"';
+      	})
+
+      	// Replace ":" with "@colon@" if it's between single-quotes
+      	.replace(/:\s*'([^']*)'/g, function(match, p1) {
+      		return ': "' + p1.replace(/:/g, '@colon@') + '"';
+      	})
+
+      	// Add double-quotes around any tokens before the remaining ":"
+      	.replace(/(['"])?([a-z0-9A-Z_]+)(['"])?\s*:/g, '"$2": ')
+
+      	// Turn "@colon@" back into ":"
+      	.replace(/@colon@/g, ':')
+      ;
+
+      console.log('Before: ' + badJSON);
+      console.log('After: ' + fixedJSON);
+      console.log(JSON.parse(fixedJSON));
+
       console.log("!!!!!!!!!!!!!!!!!!!!");
 
       var jdata = data;
