@@ -59,6 +59,7 @@ module.exports = function(app) {
     if (isJSON(data))
     {
     console.log('valid json');
+    console.log(data);
     var respon = getDataByDrm(data);
     var episodefilter = getDataByEp(respon)
     var result = [];
