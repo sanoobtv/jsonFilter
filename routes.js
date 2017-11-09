@@ -4,10 +4,9 @@ module.exports = function(app) {
   var isJSON = require('is-valid-json');
   var jsonQuery = require('json-query');
   var oresultSet=require('./Model/resultSet.js');
+  var request = require('supertest');
 
-  app.use(bodyParser.urlencoded({
-    extended: true
-  }));
+//  app.use(bodyParser.urlencoded({    extended: true  }));
 
   app.use(bodyParser.json({ type: 'application/json' }));
   //HomePage Rendering, a simple Form
@@ -52,8 +51,7 @@ module.exports = function(app) {
     }
   });
 
-  app.post('/', (req, res ,err) => {
-
+app.post('/', (req, res ,err) => {
 console.log(req.headers['content-type']);
 if(req.body.payload)
 {
@@ -139,9 +137,14 @@ if(req.body.payload)
 
 }
 }
-else {
-  console.log("incorrect payload");
-}
+request(app)
+  .post('/')
+  .expect('Content-Type', /json/)
+  .expect(200)
+  .end(function(err, res) {
+    if (err) throw err;
+    console.log('new error');
+  });
 
   });
 

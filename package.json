@@ -19,7 +19,9 @@
     "nodemon": "^1.12.1",
     "save": "^2.3.1"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "supertest": "^3.0.0"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/sanoobtv/jsonFilter.git"
