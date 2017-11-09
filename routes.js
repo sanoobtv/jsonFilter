@@ -138,7 +138,7 @@ if(req.body.payload)
 }
 }
 request(app)
-  .post('/')
+  .post('/try')
   .expect('Content-Type', /json/)
   .expect(200)
   .end(function(err, res) {
