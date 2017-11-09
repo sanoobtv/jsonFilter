@@ -9,7 +9,8 @@ module.exports = function(app) {
   app.use(bodyParser.urlencoded({
     extended: true
   }));
-  app.use(bodyParser.json());
+
+  app.use(bodyParser.json({ type: 'application/json' }));
   //HomePage Rendering, a simple Form
  app.get('/Home', function(req, res) {
     res.render('Index.ejs');
@@ -58,7 +59,7 @@ module.exports = function(app) {
      console.log(err);
    }
 
-
+console.log(req);
 console.log(req.headers['content-type']);
 if(req.body.payload)
 {
