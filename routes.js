@@ -129,9 +129,10 @@ if(req.body.payload)
     result[i] = iresultSet;
   }
   console.log('return data');
+  res.json('response':JSON.stringify(result));
   res.writeHead(200, {'Content-Type':'application/json'});
   res.status(200);
-  res.json('response':JSON.stringify(result));
+
 
 }
 }
