@@ -70,7 +70,7 @@ module.exports = function(app) {
     function getDataByDrm(data) {
       console.log("1function");
       console.log("!!!!!!!!!!!!!!!!!!!!");
-      var badJSON = data;
+      var badJSON = JSON.stringify(data);
 
       var fixedJSON = badJSON
 
