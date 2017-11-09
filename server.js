@@ -9,9 +9,10 @@ var http = require('http');
 //require('./routes.js')(app);
 
 var server = http.createServer(function(req,res){
+
+if(req.url === '/')
 console.log("request - > "+ req.body);
-/*if(req.url === '/')
-{
+/*{
 
 var payload = req.body.payload;
 if (isJSON(payload))
