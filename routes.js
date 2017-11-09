@@ -1,7 +1,6 @@
 module.exports = function(app) {
 
   var bodyParser = require('body-parser');
-  //var isJSON = require('is-json');
   var isJSON = require('is-valid-json');
   var jsonQuery = require('json-query');
   var oresultSet=require('./Model/resultSet.js');
@@ -55,15 +54,6 @@ module.exports = function(app) {
 
   app.post('/', (req, res ,err) => {
 
-  try
-  {
-
-   if(err)
-   {
-     //console.log(err);
-   }
-
-console.log(req);
 console.log(req.headers['content-type']);
 if(req.body.payload)
 {
@@ -104,10 +94,22 @@ if(req.body.payload)
       //console.log('Before: ' + badJSON);
       //console.log('After: ' + fixedJSON);
       //console.log(JSON.parse(fixedJSON));
+      function safelyParseJSON (json) {
+        // This function cannot be optimised, it's best to
+        // keep it small!
+        var parsed
 
+        try {
+          parsed = JSON.parse(json)
+        } catch (e) {
+          // Oh well, but whatever...
+        }
+
+        return parsed // Could be undefined!
+      }
       console.log("!!!!!!!!!!!!!!!!!!!!");
 
-      var jdata = JSON.parse(fixedJSON);
+      var jdata = safelyParseJSON(fixedJSON);
       var drm = true;
       return jdata.filter(
         function(jdata) {
@@ -137,19 +139,10 @@ if(req.body.payload)
 
 }
 }
-}catch (e) {
-    return console.error(e);
-  }
-  });
+else {
+  console.log("incorrect payload");
+}
 
-  /*app.all('*', function(req, res) {
-      throw new Error("Bad request")
-  })
-*/
-/*  app.use(function(e, req, res, next) {
-    if (e.message === "Bad request") {
-        res.status(400).json({error: {msg: e.message, stack: e.stack}});
-    }
-});*/
+  });
 
   }
