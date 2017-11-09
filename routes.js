@@ -131,7 +131,7 @@ if(req.body.payload)
   console.log('return data');
   res.writeHead(200, {'Content-Type':'application/json'});
   res.status(200);
-  res.send('response':JSON.stringify(result));
+  res.json('response':JSON.stringify(result));
 
 }
 }
