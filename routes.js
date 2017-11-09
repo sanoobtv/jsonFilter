@@ -131,7 +131,7 @@ if(req.body.payload)
   console.log('return data');
   res.writeHead(200, {'Content-Type':'application/json'});
   res.status(200);
-  res.end(JSON.stringify(result));
+  res.end('response':JSON.stringify(result));
 
 }
 }
@@ -140,10 +140,10 @@ if(req.body.payload)
   }
   });
 
-  app.all('*', function(req, res) {
+  /*app.all('*', function(req, res) {
       throw new Error("Bad request")
   })
-
+*/
 /*  app.use(function(e, req, res, next) {
     if (e.message === "Bad request") {
         res.status(400).json({error: {msg: e.message, stack: e.stack}});
