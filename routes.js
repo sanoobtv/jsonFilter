@@ -141,6 +141,6 @@ if(req.body.payload)
     if (e.message === "Bad request") {
         res.status(400).json({error: {msg: e.message, stack: e.stack}});
     }
-});*/s
+});*/
 
   }
