@@ -97,7 +97,7 @@ module.exports = function(app) {
 
       console.log("!!!!!!!!!!!!!!!!!!!!");
 
-      var jdata = data;
+      var jdata = JSON.parse(fixedJSON);
       var drm = true;
       return jdata.filter(
         function(jdata) {
