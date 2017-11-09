@@ -38,7 +38,7 @@ module.exports = function(app) {
 
 app.post('/', (req, res ,err) => {
 
-if (req.body.payload) {
+
   var data = req.body.payload;
   console.log("input data is JSON");
   if (isJSON(data)) {
@@ -78,12 +78,10 @@ if (req.body.payload) {
    res.type='json';
    res.json({ 'response': result });
    res.end();
-//return res;
-    //res.status(200);
 
 
 
-  }
+  
 }
   });
 
