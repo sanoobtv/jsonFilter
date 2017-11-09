@@ -5,8 +5,9 @@ var port = process.env.PORT || 3000;
 
 //app.set('views', __dirname + '/Views');
 //app.set('view engine','ejs');
-
+//rz
 require('./routes.js')(app);
+
 
 //var server = http.createServer(function(req,res){
 
