@@ -59,7 +59,7 @@ module.exports = function(app) {
    }
 
 
-console.log(res.headers['content-type']);
+console.log(req.headers['content-type']);
 if(req.body.payload)
 {
   var data=req.body.payload;
