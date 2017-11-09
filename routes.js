@@ -54,19 +54,12 @@ module.exports = function(app) {
 
   app.post('/', (req, res ,err) => {
 
-  console.log(res.headersSent);
-
-  //  var drm = req.body.drm;
-  //  var episodeCount = req.body.episodeCount;
-    var data = req.body;
-    //console.log(data);
-if(req.accepts('json'))
-{
+  var data = req.body;
   console.log("input data is JSON");
     if (isJSON(data))
     {
     console.log('valid json');
-    //console.log(data);
+    data=JSON.parse(data);
     var respon = getDataByDrm(data);
     var episodefilter = getDataByEp(respon)
     var result = [];
@@ -102,13 +95,8 @@ if(req.accepts('json'))
     res.status(400);
     res.end('error');
   }
-}
-else
-{
-  console.log("Error");
-  res.status(400);
-  res.end('error req not json');
-}
+
+
   });
 
   }
