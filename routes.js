@@ -55,8 +55,7 @@ module.exports = function(app) {
   app.post('/', (req, res ,err) => {
   //  var drm = req.body.drm;
   //  var episodeCount = req.body.episodeCount;
-    var data = req.body.data;
-
+    var data = req.body.payload;
     if (isJSON(data))
     {
     console.log('valid json');
@@ -84,18 +83,14 @@ module.exports = function(app) {
     var iresultSet = new oresultSet(episodefilter[i].image.showImage, episodefilter[i].slug, episodefilter[i].title)
     result[i] = iresultSet;
   }
-  res.send({
-    'response': result,
-    'status': 'Sucsess'
-
-  });
+  res.writeHead(200, {'Content-Type':'application/json'});
+  res.end(JSON.stringify(result));
   }
 
   else
   {
-  res.send({
-  'status':'Error!! Could not decode request: JSON parsing failed'
-  });
+    res.writeHead(400, {'Content-Type':'application/json'});
+    res.end('error');
   }
 
 
