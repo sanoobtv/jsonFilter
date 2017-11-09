@@ -9,7 +9,7 @@ var http = require('http');
 //require('./routes.js')(app);
 
 var server = http.createServer(function(req,res){
-console.log("request - > "+ req.url);
+console.log("request - > "+ req.body);
 if(req.url === '/')
 {
 
