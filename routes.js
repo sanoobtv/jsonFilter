@@ -55,7 +55,7 @@ module.exports = function(app) {
   app.post('/', (req, res ,err) => {
    if(err)
    {
-     console.log('err');
+     console.log(err);
    }
   var data = req.body;
   console.log("input data is JSON");
