@@ -53,21 +53,26 @@ module.exports = function(app) {
   });
 
   app.post('/', (req, res ,err) => {
-    req.accepts('application/json')
+
+  console.log(res.headersSent);
+
   //  var drm = req.body.drm;
   //  var episodeCount = req.body.episodeCount;
-    var data = req.body.payload;
-
+    var data = req.body;
+    //console.log(data);
+if(req.accepts('json'))
+{
+  console.log("input data is JSON");
     if (isJSON(data))
     {
     console.log('valid json');
-    console.log(data);
+    //console.log(data);
     var respon = getDataByDrm(data);
     var episodefilter = getDataByEp(respon)
     var result = [];
 
     function getDataByDrm(data) {
-      var jdata = JSON.parse(data);
+      var jdata = data;
       var drm = true;
       return jdata.filter(
         function(jdata) {
@@ -91,13 +96,19 @@ module.exports = function(app) {
   res.end(JSON.stringify(result));
   }
 
-  if(!req.is('json') )
+  else
   {
     console.log("Error");
     res.status(400);
     res.end('error');
   }
-
-
+}
+else
+{
+  console.log("Error");
+  res.status(400);
+  res.end('error req not json');
+}
   });
+
   }
