@@ -53,18 +53,22 @@ module.exports = function(app) {
   });
 
   app.post('/', (req, res ,err) => {
-
+   if(err)
+   {
+     console.log('err');
+   }
   var data = req.body;
   console.log("input data is JSON");
     if (isJSON(data))
     {
     console.log('valid json');
-    
+
     var respon = getDataByDrm(data);
     var episodefilter = getDataByEp(respon)
     var result = [];
 
     function getDataByDrm(data) {
+      console.log("1function");
       var jdata = data;
       var drm = true;
       return jdata.filter(
@@ -74,6 +78,7 @@ module.exports = function(app) {
     }
 
     function getDataByEp(jrespon) {
+      console.log("2function");
       return jrespon.filter(
         function(jrespon) {
           return jrespon.episodeCount > 0;
@@ -81,21 +86,15 @@ module.exports = function(app) {
       );
     }
     for (var i = 0; i < episodefilter.length; i++) {
+      console.log("loop");
     var iresultSet = new oresultSet(episodefilter[i].image.showImage, episodefilter[i].slug, episodefilter[i].title)
     result[i] = iresultSet;
   }
+
   res.writeHead(200, {'Content-Type':'application/json'});
   res.status(200);
   res.end(JSON.stringify(result));
-  }
-
-  else
-  {
-    console.log("Error");
-    res.status(400);
-    res.end('error');
-  }
-
+}
 
   });
 
