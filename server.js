@@ -6,5 +6,5 @@ require('./routes.js')(app);
 
 
 app.listen(port, function () {
-  console.log('Example app listening on port 3000!');
+  console.log('JsonFilter app listening on port !');
 });

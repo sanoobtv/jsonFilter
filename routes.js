@@ -2,7 +2,6 @@ module.exports = function(app) {
 
   var bodyParser = require('body-parser');
   var isJSON = require('is-valid-json');
-  var jsonQuery = require('json-query');
   var oresultSet = require('./Model/resultSet.js');
   var methodOverride = require('method-override')
 
@@ -17,7 +16,7 @@ module.exports = function(app) {
     } catch (e) {
       parsed = json;
     }
-  return parsed 
+  return parsed
   }
 
   app.use(bodyParser.json());

@@ -14,7 +14,6 @@
     "express": "^4.16.2",
     "is-json": "^2.0.1",
     "is-valid-json": "^1.0.2",
-    "json-query": "^2.2.2",
     "nodemon": "^1.12.1",
     "save": "^2.3.1"
   },
