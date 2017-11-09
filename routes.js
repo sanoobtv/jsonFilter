@@ -137,10 +137,10 @@ if(req.body.payload)
       throw new Error("Bad request")
   })
 
-  app.use(function(e, req, res, next) {
+/*  app.use(function(e, req, res, next) {
     if (e.message === "Bad request") {
         res.status(400).json({error: {msg: e.message, stack: e.stack}});
     }
-});
+});*/s
 
   }
