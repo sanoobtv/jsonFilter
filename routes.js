@@ -60,6 +60,7 @@ module.exports = function(app) {
 console.log(req.body);
 if(req.body.payload)
 {
+  var data=req.body.payload;
   console.log("input data is JSON");
     if (isJSON(data))
     {
