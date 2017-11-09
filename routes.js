@@ -56,7 +56,7 @@ module.exports = function(app) {
   //  var drm = req.body.drm;
   //  var episodeCount = req.body.episodeCount;
     var data = req.body.payload;
-    if (isJSON(data))
+    if (req.is('application/json'))
     {
     console.log('valid json');
     console.log(data);
@@ -85,11 +85,13 @@ module.exports = function(app) {
     result[i] = iresultSet;
   }
   res.writeHead(200, {'Content-Type':'application/json'});
+  res.status(200);
   res.end(JSON.stringify(result));
   }
 
-  else
+  if (!req.is('application/json'))
   {
+    res.status(400);
     res.writeHead(400, {'Content-Type':'application/json'});
     res.end('error');
   }
