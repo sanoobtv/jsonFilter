@@ -57,7 +57,9 @@ module.exports = function(app) {
    {
      console.log(err);
      }
-  var data = req.body.payload;
+console.log(req.body);
+if(req.body.payload)
+{
   console.log("input data is JSON");
     if (isJSON(data))
     {
@@ -91,9 +93,9 @@ module.exports = function(app) {
       	.replace(/@colon@/g, ':')
       ;
 
-      console.log('Before: ' + badJSON);
-      console.log('After: ' + fixedJSON);
-      console.log(JSON.parse(fixedJSON));
+      //console.log('Before: ' + badJSON);
+      //console.log('After: ' + fixedJSON);
+      //console.log(JSON.parse(fixedJSON));
 
       console.log("!!!!!!!!!!!!!!!!!!!!");
 
@@ -123,7 +125,7 @@ module.exports = function(app) {
   res.status(200);
   res.end(JSON.stringify(result));
 }
-
+}
   });
 
   }
