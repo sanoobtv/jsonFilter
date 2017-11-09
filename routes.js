@@ -56,8 +56,7 @@ module.exports = function(app) {
    if(err)
    {
      console.log(err);
-     next();
-   }
+     }
   var data = req.body;
   console.log("input data is JSON");
     if (isJSON(data))
