@@ -53,8 +53,8 @@ module.exports = function(app) {
   });
 
   app.post('/', (req, res ,err) => {
-    var drm = req.body.drm;
-    var episodeCount = req.body.episodeCount;
+  //  var drm = req.body.drm;
+  //  var episodeCount = req.body.episodeCount;
     var data = req.body.data;
 
     if (isJSON(data))
