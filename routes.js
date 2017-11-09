@@ -118,7 +118,7 @@ module.exports = function(app) {
     var iresultSet = new oresultSet(episodefilter[i].image.showImage, episodefilter[i].slug, episodefilter[i].title)
     result[i] = iresultSet;
   }
-
+  console.log('return data');
   res.writeHead(200, {'Content-Type':'application/json'});
   res.status(200);
   res.end(JSON.stringify(result));
