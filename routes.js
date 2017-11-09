@@ -53,10 +53,12 @@ module.exports = function(app) {
   });
 
   app.post('/', (req, res ,err) => {
+    req.accepts('application/json')
   //  var drm = req.body.drm;
   //  var episodeCount = req.body.episodeCount;
     var data = req.body.payload;
-    if (req.is('application/json'))
+
+    if (isJSON(data))
     {
     console.log('valid json');
     console.log(data);
@@ -89,10 +91,10 @@ module.exports = function(app) {
   res.end(JSON.stringify(result));
   }
 
-  if (!req.is('application/json'))
+  if(!req.is('json') )
   {
+    console.log("Error");
     res.status(400);
-    res.writeHead(400, {'Content-Type':'application/json'});
     res.end('error');
   }
 
