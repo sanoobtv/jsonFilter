@@ -40,17 +40,15 @@ app.post('/', (req, res ,err) => {
 
 
   var data = req.body.payload;
-  console.log("input data is JSON");
+
   if (isJSON(data)) {
-    console.log('valid json');
+
     var respon = getDataByDrm(safelyParseJSON(data));
     var episodefilter = getDataByEp(respon);
     var result = [];
 
 
     function getDataByDrm(jdata) {
-      console.log("1function");
-
       var drm = true;
       return jdata.filter(
         function(jdata) {
@@ -67,20 +65,11 @@ app.post('/', (req, res ,err) => {
     }
 
     for (var i = 0; i < episodefilter.length; i++) {
-      console.log("loop");
+
       var iresultSet = new oresultSet(episodefilter[i].image.showImage, episodefilter[i].slug, episodefilter[i].title)
       result[i] = iresultSet;
     }
-
-
-    console.log('return data');
-   res.status = 200;
-   res.type='json';
-   res.json({ 'response': result });
-   res.end();
-
-
-
+res.status(200).send({ response: result });
   
 }
   });
