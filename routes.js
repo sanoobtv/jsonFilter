@@ -23,10 +23,9 @@ module.exports = function(app) {
     return parsed // Could be undefined!
   }
 
-  function fixJson(data)
+  /*function fixJson(data)
   {
   var badJSON = JSON.stringify(data);
-
   var fixedJSON = badJSON
 
     // Replace ":" with "@colon@" if it's between double-quotes
@@ -48,28 +47,23 @@ module.exports = function(app) {
 
   return (fixedJSON);
   }
+*/
 
-
-
-
-
-//  app.use(bodyParser.urlencoded({    extended: true  }));
 
   app.use(bodyParser.json());
-  app.use(errorHandler);
-  app.use(logErrors)
-  app.use(clientErrorHandler)
 
+//Express Error handling.
+  app.use(errorHandler);
+  //app.use(logErrors)
+  //app.use(clientErrorHandler)
+
+//Invalid Json request Error Handling
   function errorHandler (err, req, res, next) {
-    res.status = 400;
-    res.type='json';
-    res.json({
-          'error': 'error'
-        });
-    res.end();
+    res.status(400).send({ error: 'Could not decode request' })
 
 }
-
+/*
+//To Log Errors
 function logErrors (err, req, res, next) {
   console.error(err.stack)
   next(err)
@@ -83,7 +77,7 @@ function clientErrorHandler (err, req, res, next) {
   }
 }
 
-
+*/
   //HomePage Rendering, a simple Form
 /* app.get('/Home', function(req, res) {
     res.render('Index.ejs');
@@ -136,7 +130,7 @@ if (req.body.payload) {
     var respon = getDataByDrm(safelyParseJSON(data));
     var episodefilter = getDataByEp(respon);
     var result = [];
-    data = fixJson(data);
+
 
     function getDataByDrm(jdata) {
       console.log("1function");
