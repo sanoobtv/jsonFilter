@@ -56,6 +56,7 @@ module.exports = function(app) {
    if(err)
    {
      console.log(err);
+     next();
    }
   var data = req.body;
   console.log("input data is JSON");
@@ -69,7 +70,7 @@ module.exports = function(app) {
 
     function getDataByDrm(data) {
       console.log("1function");
-      var jdata = data;
+      var jdata = JSON.parse(data);
       var drm = true;
       return jdata.filter(
         function(jdata) {
