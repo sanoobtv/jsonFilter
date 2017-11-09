@@ -54,6 +54,10 @@ module.exports = function(app) {
   });
 
   app.post('/', (req, res ,err) => {
+
+  try
+  {
+
    if(err)
    {
      //console.log(err);
@@ -131,6 +135,9 @@ if(req.body.payload)
 
 }
 }
+}catch (e) {
+    return console.error(e);
+  }
   });
 
   app.all('*', function(req, res) {
