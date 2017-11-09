@@ -56,7 +56,7 @@ module.exports = function(app) {
   app.post('/', (req, res ,err) => {
    if(err)
    {
-     console.log(err);
+     //console.log(err);
    }
 
 console.log(req);
@@ -127,8 +127,8 @@ if(req.body.payload)
   console.log('return data');
   res.writeHead(200, {'Content-Type':'application/json'});
   res.status(200);
-  res.json(JSON.stringify(result));
-  
+  res.end(JSON.stringify(result));
+
 }
 }
   });
