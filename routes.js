@@ -70,10 +70,12 @@ module.exports = function(app) {
     function getDataByDrm(data) {
       console.log("1function");
       console.log("!!!!!!!!!!!!!!!!!!!!");
-      console.log(data);
+
+      JSONArray jsonArr = new JSONArray(data);
+      console.log(jsonArr);
       console.log("!!!!!!!!!!!!!!!!!!!!");
 
-      var jdata = JSON.parse(data);
+      var jdata = data;
       var drm = true;
       return jdata.filter(
         function(jdata) {
